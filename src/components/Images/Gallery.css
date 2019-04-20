@@ -1,0 +1,8 @@
+.Gallery {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  width: 80px;
+  display: flex;    
+  flex-direction: column;
+ 
+}
