@@ -6,6 +6,12 @@
   flex-flow: column;
   align-items: center;
   height: 100%;
+  font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  /* font-family: -apple-system,BlinkMacSystemFont, "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
+  
+  line-height: 2.5;
 }
 
 @media (min-width: 500px) {

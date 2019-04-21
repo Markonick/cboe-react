@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Gallery from '../../components/Images/Gallery';
 import Aux from '../../hoc/Aux/Aux';
 import axios from '../../axios-images';
-import { Router, Route, Link } from 'react-router-dom'; 
+import classes from '../../components/Images/Gallery.css';
 
 class ThumbViewer extends Component {
   state = {
     images: [],
+    index: null, 
     clicked: false,
   }
 
@@ -15,22 +16,15 @@ class ThumbViewer extends Component {
       .then(response => {
         this.setState({images: response.data});
       })
-      .catch( (error) => {
+      .catch( () => {
         this.setState({error: true});
       })
   }
 
-  imageClickHandler = (url, index) => {
-    this.setState({clicked: true});
-    this.setState({url: url});
-    this.setState({index: index});
-    return
-  }
-
   render () {
+
     let images = this.state.images.map((url, idx) => {
       return {
-        clicked: this.state.clicked,
         url: url,
         idx: idx,
         key: idx,
@@ -38,7 +32,7 @@ class ThumbViewer extends Component {
     });
 
     let gallery = (
-      <Gallery images={images} />
+      <Gallery images={images} className={classes.Gallery}/>
     );
   
     return (

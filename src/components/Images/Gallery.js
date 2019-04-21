@@ -1,27 +1,34 @@
 import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
-import Image from './Image';
 import classes from './Gallery.css';
+import { withRouter } from 'react-router-dom';
+import LazyLoad from 'react-lazy-load';
 
 const gallery = (props) => {
-  let urls = props.images.map((url, clicked, idx, key) => {
+
+  const imageClickHandler = (item) => {
+    console.log("You clicked me ok? id is " + item.idx);
+    props.history.push({
+      pathname: '/image/' + item.idx,
+      state: {url: item.url}
+      });
+  }
+  let urls = props.images.map((item) => {
     return (
-      <Image
-        className={classes.Gallery}
-        clicked={clicked}
-        url={url}
-        idx={idx}
-        key={key}/>
+      <LazyLoad className={classes.Image} offsetVertical={500} key={item.key}>
+        <img src={item.url} alt="" onClick={() => imageClickHandler(item)}/>
+      </LazyLoad>
     );
   });
 
   return (
     <Aux>
-      <div>
+      <div 
+        className={classes.Gallery}>
         {urls}
       </div>
     </Aux>
   );
 };
 
-export default gallery;
+export default withRouter(gallery);

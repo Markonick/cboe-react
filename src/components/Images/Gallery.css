@@ -1,8 +1,17 @@
 .Gallery {
-  margin-top: 20px;
-  border: 1px solid #ccc;
+  margin-top: 80px;
+  /* border: 1px solid #ccc;
   width: 80px;
   display: flex;    
-  flex-direction: column;
- 
+  flex-direction: column; */
+}
+
+.Gallery img {
+  height: 80px;
+  width: 80px;
+  float: left;
+}
+
+.Gallery img:hover {
+  opacity: 0.5;
 }
