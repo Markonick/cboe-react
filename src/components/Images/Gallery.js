@@ -2,7 +2,7 @@ import React from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import classes from './Gallery.css';
 import { withRouter } from 'react-router-dom';
-import LazyLoad from 'react-lazy-load';
+import Pagination from 'react-bootstrap/Pagination'
 
 const gallery = (props) => {
 
@@ -11,13 +11,11 @@ const gallery = (props) => {
     props.history.push({
       pathname: '/image/' + item.idx,
       state: {url: item.url}
-      });
+    });
   }
   let urls = props.images.map((item) => {
     return (
-      <LazyLoad className={classes.Image} offsetVertical={500} key={item.key}>
-        <img src={item.url} alt="" onClick={() => imageClickHandler(item)}/>
-      </LazyLoad>
+      <img src={item.url} alt="" onClick={() => imageClickHandler(item)}  key={item.key}/>
     );
   });
 
@@ -25,7 +23,9 @@ const gallery = (props) => {
     <Aux>
       <div 
         className={classes.Gallery}>
-        {urls}
+        {/* <Pagination> */}
+          {urls}
+        {/* </Pagination> */}
       </div>
     </Aux>
   );

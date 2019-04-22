@@ -1,0 +1,82 @@
+.DatabaseDropdown {
+  margin: 0;
+  display: flex;
+  height: 100%;
+  width: auto;
+  align-items: center;
+  text-decoration-color: white;
+  background-color: #252525;
+}
+
+.DatabaseDropdown a {
+  margin: 0;
+  color: #292828;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  padding: 16px 10px;
+  background-color:rgb(27, 27, 27);
+  color: white;
+}
+
+.DatabaseDropdown .dropdown-menu {
+  padding-top: 10px;
+}
+
+.DatabaseDropdown button {
+  background-color:rgb(27, 27, 27);
+  color: white;
+  margin: 0;
+  padding-left: 10px;
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  border: 0px;
+  line-height: 4.5;
+  outline: none !important;
+
+}
+
+button:hover,
+button:active {
+  background-color: #252525;
+  margin-top:-4px;
+  color: magenta;
+}
+
+.DatabaseDropdown a:hover,
+.DatabaseDropdown a:active,
+.DatabaseDropdown a.active {
+  color: magenta;
+  text-decoration-color: white;
+  background-color: #252525;
+}
+
+@media (min-width: 500px) {
+  .DatabaseDropdown {
+    /* margin: 0;
+    display: flex;
+    height: 100%;
+    width: auto;
+    align-items: center;
+    text-decoration-color: white;
+    background-color: #252525; */
+  }
+
+  .DatabaseDropdown a {
+    /* text-decoration-color: white;
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    padding: 16px 10px;
+    background-color: #252525; */
+  }
+
+}

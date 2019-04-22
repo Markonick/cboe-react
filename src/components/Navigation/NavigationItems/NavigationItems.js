@@ -1,5 +1,6 @@
 import React from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
+import DatabaseDropdown from '../../DatabaseDropdown/DatabaseDropdown';
 
 import classes from './NavigationItems.css';
 
@@ -9,8 +10,7 @@ const navigationItems = () => (
     <NavigationItem link="/sql" >Sql Input</NavigationItem>
     <NavigationItem link="/history">History</NavigationItem>
     <NavigationItem link="/info">Info</NavigationItem>
-    <NavigationItem link="/databases">Clinical Databases</NavigationItem>
-
+    <DatabaseDropdown/>
   </ul>
 );
 

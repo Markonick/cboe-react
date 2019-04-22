@@ -7,8 +7,6 @@ import classes from '../../components/Images/Gallery.css';
 class ThumbViewer extends Component {
   state = {
     images: [],
-    index: null, 
-    clicked: false,
   }
 
   componentDidMount () {
