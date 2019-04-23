@@ -17,7 +17,7 @@ class QueryBox extends Component {
         this.setState({images: response.data});
 
         this.props.history.push({
-          pathname: '/',
+          pathname: '/images/1',
           state: {images: this.state.images}
         });
       })

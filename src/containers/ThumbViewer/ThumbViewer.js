@@ -2,26 +2,51 @@ import React, { Component } from 'react';
 import Gallery from '../../components/Images/Gallery';
 import Aux from '../../hoc/Aux/Aux';
 import axios from '../../axios-images';
-import classes from '../../components/Images/Gallery.css';
+import classes from './ThumbViewer.css';
+import Pagination from "react-js-pagination";
+import { withRouter } from 'react-router-dom';
 
 class ThumbViewer extends Component {
   state = {
     images: [],
+    activePage: 1,
+    totalItems: 1,
+    itemsPerPage: 10,
+    pageCount: 1,
   }
 
-  componentDidMount () {
+  fetchImages = (activePage) => {
     axios.get('https://thumb-viewer.firebaseio.com/images.json')
       .then(response => {
-        this.setState({images: response.data});
+        let offset = this.state.itemsPerPage*(activePage - 1);
+        this.setState({images: response.data.slice(offset, this.state.itemsPerPage)});
+        this.setState({totalItems: response.data.length});
+
+        let pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
+        this.setState({pageCount: pageCount});
       })
       .catch( () => {
         this.setState({error: true});
       })
   }
 
-  render () {
+  componentDidMount () {
+    this.fetchImages(this.state.activePage);
+  }
 
-    let images = this.state.images.map((url, idx) => {
+  pageChangeHandler = (pageNumber) => {
+    console.log(`active page is ${pageNumber}`);
+    this.setState({activePage: pageNumber});
+    this.fetchImages(pageNumber);
+    this.props.history.push({
+      pathname: '/images/' + pageNumber
+    });
+  }
+
+  render () {
+    const { totalItems, images, activePage, itemsPerPage } = this.state
+
+    let imagesArray = images.map((url, idx) => {
       return {
         url: url,
         idx: idx,
@@ -30,15 +55,24 @@ class ThumbViewer extends Component {
     });
 
     let gallery = (
-      <Gallery images={images} className={classes.Gallery}/>
+      <Gallery 
+        images={imagesArray}/>
     );
-  
+
     return (
-      <Aux>
-        {gallery}
+      <Aux>     
+        <div className={classes.ThumbViewer}>
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={totalItems}
+            pageRangeDisplayed={7}
+            onChange={this.pageChangeHandler.bind(this)}/>
+        </div>
+        {gallery} 
       </Aux>
     );
   }
 }
 
-export default ThumbViewer;
+export default withRouter(ThumbViewer);

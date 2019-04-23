@@ -12,16 +12,14 @@
   margin: 0;
   color: #292828;
   text-decoration: none;
-  width: 100%;
+  text-align: center;
+  width: 100px;
   box-sizing: border-box;
   display: block;
-  padding: 16px 10px;
+  padding: 4px;
   background-color:rgb(27, 27, 27);
+  transition: background-color .3s;
   color: white;
-}
-
-.DatabaseDropdown .dropdown-menu {
-  padding-top: 10px;
 }
 
 .DatabaseDropdown button {
@@ -47,36 +45,16 @@
 button:hover,
 button:active {
   background-color: #252525;
-  margin-top:-4px;
-  color: magenta;
+  margin-top: -2px;
+  transition: background-color .4s;
+  color: magenta;/*mediumturquoise;*/
 }
 
 .DatabaseDropdown a:hover,
 .DatabaseDropdown a:active,
 .DatabaseDropdown a.active {
-  color: magenta;
+  color: magenta;/*mediumturquoise;*/
   text-decoration-color: white;
   background-color: #252525;
-}
-
-@media (min-width: 500px) {
-  .DatabaseDropdown {
-    /* margin: 0;
-    display: flex;
-    height: 100%;
-    width: auto;
-    align-items: center;
-    text-decoration-color: white;
-    background-color: #252525; */
-  }
-
-  .DatabaseDropdown a {
-    /* text-decoration-color: white;
-    color: white;
-    text-decoration: none;
-    height: 100%;
-    padding: 16px 10px;
-    background-color: #252525; */
-  }
-
+  transition: background-color .4s;
 }

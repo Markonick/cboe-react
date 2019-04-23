@@ -7,7 +7,19 @@ import { withRouter } from 'react-router-dom';
 class databaseDropdown extends Component {
   state = {
     images: [],
+    databases: [],
+    toggle: false,
     error: false, 
+  }
+
+  componentDidMount() {
+    axios.get('https://thumb-viewer.firebaseio.com/databases.json')
+      .then(response => {
+        this.setState({databases: response.data});
+      })
+      .catch( (error) => {
+        this.setState({error: true});
+      })
   }
 
   selectHandler = () => {
@@ -17,7 +29,7 @@ class databaseDropdown extends Component {
         this.setState({images: response.data});
 
         this.props.history.push({
-          pathname: '/',
+          pathname: '/images/1',
           state: {images: this.state.images}
         });
       })
@@ -25,20 +37,31 @@ class databaseDropdown extends Component {
         this.setState({error: true});
       })
   }
+
+  onToggle = (toggle) => {
+    if(this.state.toggle === toggle) {
+      this.setState({toggle: !this.state.toggle});
+    }
+  }
+
   render () {
-  
+    let count = 0;
+    let databases = this.state.databases.map((db) => {
+      return (
+        <Dropdown.Item key={count++}>{db}</Dropdown.Item>
+      )
+    });
+
     return (
       <Dropdown 
         className={classes.DatabaseDropdown}
-        onSelect={this.selectHandler}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Clinical Databases
-        </Dropdown.Toggle>
-  
+        onSelect={this.selectHandler}
+        onToggle={this.onToggle}>
+        <Dropdown.Toggle id="dropdown-basic">
+          Databases
+        </Dropdown.Toggle>  
         <Dropdown.Menu>
-          <Dropdown.Item>Action</Dropdown.Item>
-          <Dropdown.Item>Another action</Dropdown.Item>
-          <Dropdown.Item>Something else</Dropdown.Item>
+        {databases}
         </Dropdown.Menu>
       </Dropdown>
     );

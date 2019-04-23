@@ -16,7 +16,8 @@
 .NavigationItem a:hover,
 .NavigationItem a:active,
 .NavigationItem a.active {
-  color: magenta;
+  color: magenta;/*mediumturquoise;*/
+  transition: background-color .4s;
 }
 
 @media (min-width: 500px) {
@@ -41,7 +42,8 @@
   .NavigationItem a.active {
     background-color: #252525;
     /* border-bottom: 1px solid white;magenta; */
-    margin-top:-4px;
-    color: magenta;
+    margin-top:-1px;
+    color: magenta;/*mediumturquoise;*/
+    transition: background-color .4s;
   }
 }

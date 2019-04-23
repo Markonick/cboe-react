@@ -14,10 +14,10 @@ class App extends Component {
       <div>
         <Layout>
           <Switch>
-            <Route path="/image/:imageId" component={Image} />
+            <Route path="/images/:page/:imageId" component={Image} />
             <Route path="/sql" component={QueryBox} />
             <Route path="/history" component={History} />
-            <Route path="/" exact component={ThumbViewer} />
+            <Route path="/images/:page" exact component={ThumbViewer} />
           </Switch>
         </Layout>
       </div>
