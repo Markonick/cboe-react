@@ -1,32 +1,15 @@
-.DatabaseDropdown {
-  margin: 0;
-  display: flex;
-  height: 100%;
-  width: auto;
-  align-items: center;
-  text-decoration-color: white;
-  background-color: #252525;
-}
-
-.DatabaseDropdown a {
-  margin: 0;
-  color: #292828;
-  text-decoration: none;
-  text-align: center;
-  width: 100px;
-  box-sizing: border-box;
-  display: block;
-  padding: 4px;
+.DatabaseDropdown div {
   background-color:rgb(27, 27, 27);
-  transition: background-color .3s;
-  color: white;
+  border-radius: 0px;
+  border: 0px;
 }
 
 .DatabaseDropdown button {
   background-color:rgb(27, 27, 27);
-  color: white;
+  color: lime;
   margin: 0;
   padding-left: 10px;
+  /* padding-bottom: 12px; */
   list-style: none;
   display: flex;
   flex-flow: column;
@@ -37,24 +20,44 @@
   font-weight: 500;
   font-size: 16px;
   border: 0px;
-  line-height: 4.5;
+  line-height: 4;
   outline: none !important;
+  border-radius: 0px;
+  outline: none;
+  box-shadow:none !important;
+  border: 0 !important;
 
 }
 
-button:hover,
-button:active {
-  background-color: #252525;
+.DatabaseDropdown button:focus,
+.DatabaseDropdown button:hover,
+.DatabaseDropdown button:active {
+  background-color: #252525 !important;
+  color: yellow !important;
   margin-top: -2px;
   transition: background-color .4s;
-  color: magenta;/*mediumturquoise;*/
+  border-radius: 0px;
+  outline: none !important;
 }
 
-.DatabaseDropdown a:hover,
-.DatabaseDropdown a:active,
-.DatabaseDropdown a.active {
-  color: magenta;/*mediumturquoise;*/
-  text-decoration-color: white;
+.DatabaseDropdown div a {
+  transition: background-color .4s;
+  color: lime;
+  text-decoration-color: yellow;
+  border-radius: 0px;
+  outline: none !important;
+  border: 0;
+}
+
+.DatabaseDropdown div a:hover,
+.DatabaseDropdown div a:active {
   background-color: #252525;
   transition: background-color .4s;
+  color: yellow;
+  text-decoration-color: yellow;
+  border-radius: 0px;
+  border: 0 !important;
+}
+.DatabaseDropdown button::after {
+  display:none;
 }

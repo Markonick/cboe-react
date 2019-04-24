@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 import axios from '../../axios-images';
 import classes from './DatabaseDropdown.css';
 import { withRouter } from 'react-router-dom';
@@ -53,17 +54,13 @@ class databaseDropdown extends Component {
     });
 
     return (
-      <Dropdown 
+      <DropdownButton
+        title="Databases"
         className={classes.DatabaseDropdown}
         onSelect={this.selectHandler}
-        onToggle={this.onToggle}>
-        <Dropdown.Toggle id="dropdown-basic">
-          Databases
-        </Dropdown.Toggle>  
-        <Dropdown.Menu>
+        onToggle={this.onToggle}>     
         {databases}
-        </Dropdown.Menu>
-      </Dropdown>
+      </DropdownButton>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gallery from '../../components/Images/Gallery';
+import Gallery from '../../components/Gallery/Gallery';
 import Aux from '../../hoc/Aux/Aux';
 import axios from '../../axios-images';
 import classes from './ThumbViewer.css';

@@ -2,22 +2,79 @@
   width: 100%;
   height: 100%;
   border: 1px;
+  outline: none !important;
 }
 
-textarea { 
+.QueryBox Table {
+  margin-top: 30px;
+  color: magenta;
+}
+
+.QueryBox td {
+  padding-left: 20px;
+}
+.QueryBox button {
+  font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 3;
+  height: 80px;
+  margin-left: 16px;
+  outline: none;
+  box-shadow:none !important;
+  border: 0 !important;
+  background-color: rgb(27, 27, 27);
+  color: lime;
+  border-radius: 0px;
+}
+
+.QueryBox button:hover {
+  background-color: #252525 !important;
+  color: yellow !important;
+  margin-top: -2px;
+  transition: background-color .4s;
+  outline: none !important;
+}
+
+.QueryBox button:active {
+  background-color: #252525 !important;
+  color: magenta !important;
+  margin-top: -2px;
+  transition: background-color .4s;
+  border-radius: 0px;
+  outline: none !important;
+}
+
+input[type="text"], textarea {
+  outline: none;
+  box-shadow:none !important;
+  border: 0 !important;
+}
+
+.QueryBox textarea { 
   font-size: 20px;
   display:flex;
   margin:auto;
   color: magenta;
-  background-color: black;/*rgb(17, 17, 17);*/
-  border: black;
+  background-color: black;
   width: 90%;
   height: 100%;
-  outline: none !important;
+  border: 0;
   padding: 20px;
 }
 
-textarea:focus,
-textarea:active {
-  outline: lime;
-}
+.QueryBox textarea:focus,
+.QueryBox textarea:active {
+  font-size: 20px;
+  display:flex;
+  margin:auto;
+  color: magenta;
+  background-color: black;
+  width: 90%;
+  height: 100%;
+  outline: none !important;
+  border: black;
+  padding: 20px;
+
+  border: 0;
+} 

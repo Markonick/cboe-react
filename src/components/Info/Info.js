@@ -1,12 +1,13 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
-import classes from './History.css'
+import classes from './Info.css'
 import { withRouter } from 'react-router-dom';
 
-const history = (props) => {
+const info = (props) => {
   return (
-    <Table className={classes.History} striped bordered hover  variant="dark" size="sm">
-      <tbody>
+    <Table className={classes.Info} striped bordered hover  variant="dark" size="sm">
+  
+      <tbody className={classes.Info}>
         <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
         </tr>      <tr>
@@ -27,4 +28,4 @@ const history = (props) => {
   );
 }
 
-export default withRouter(history);
+export default withRouter(info);

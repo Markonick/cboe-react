@@ -4,6 +4,7 @@ import ThumbViewer from './containers/ThumbViewer/ThumbViewer';
 import Image from './containers/Image/Image';
 import QueryBox from './containers/QueryBox/QueryBox';
 import History from './components/History/History';
+import Info from './components/Info/Info';
 
 import { Route, Switch } from 'react-router-dom'; 
 import './App.css';
@@ -17,6 +18,7 @@ class App extends Component {
             <Route path="/images/:page/:imageId" component={Image} />
             <Route path="/sql" component={QueryBox} />
             <Route path="/history" component={History} />
+            <Route path="/info" component={Info} />
             <Route path="/images/:page" exact component={ThumbViewer} />
           </Switch>
         </Layout>
