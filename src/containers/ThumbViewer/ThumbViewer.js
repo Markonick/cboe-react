@@ -14,7 +14,7 @@ class ThumbViewer extends Component {
     itemsPerPage: 100,
     pageCount: 1,
     schema: 'bmkk',
-    firebase: false,
+    firebase: true,
   }
 
   
