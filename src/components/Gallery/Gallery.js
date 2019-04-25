@@ -8,13 +8,13 @@ const gallery = (props) => {
   const imageClickHandler = (item) => {
     console.log("You clicked me ok? id is " + item.idx);
     props.history.push({
-      pathname: '/images/' + item.page + '/' + item.idx,
+      pathname: '/images/' + props.page + '/' + item.idx,
       state: {url: item.url}
     });
   }
   let urls = props.images.map((item) => {
     return (
-      <img src={item.url} alt="" onClick={() => imageClickHandler(item)}  key={item.key}/>
+      <img src={item.url} alt="" onClick={() => imageClickHandler(item)} key={item.key}/>
     );
   });
 

@@ -20,6 +20,7 @@ class App extends Component {
             <Route path="/history" component={History} />
             <Route path="/info" component={Info} />
             <Route path="/images/:page" exact component={ThumbViewer} />
+            <Route path="/" exact component={ThumbViewer} />
           </Switch>
         </Layout>
       </div>

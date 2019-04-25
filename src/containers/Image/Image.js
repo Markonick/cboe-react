@@ -8,8 +8,7 @@ class Image extends Component {
     return (
       <LazyLoad 
         className={classes.Image}
-        offsetVertical={500}
-        >
+        offsetVertical={500}>
         <img src={this.props.location.state.url} alt=""/>
       </LazyLoad>
     );

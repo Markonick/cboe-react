@@ -11,26 +11,66 @@ class ThumbViewer extends Component {
     images: [],
     activePage: 1,
     totalItems: 1,
-    itemsPerPage: 10,
+    itemsPerPage: 100,
     pageCount: 1,
+    schema: 'bmkk',
+    firebase: false,
   }
 
+  
   fetchImages = (activePage) => {
-    axios.get('https://thumb-viewer.firebaseio.com/images.json')
+    if (this.state.firebase === true) { 
+      const url = 'images.json'
+      axios.get(url, {
+        params: {
+          page: activePage,
+        },
+      })
       .then(response => {
         let offset = this.state.itemsPerPage*(activePage - 1);
-        this.setState({images: response.data.slice(offset, this.state.itemsPerPage)});
+        let end = this.state.itemsPerPage*(activePage);
+        let images = response.data.slice(offset, end);
+        this.setState({images: images});
         this.setState({totalItems: response.data.length});
-
         let pageCount = Math.ceil(response.data.length / this.state.itemsPerPage);
         this.setState({pageCount: pageCount});
+        this.setState({activePage: activePage});
       })
-      .catch( () => {
+      .catch( (error) => {
+        console.log(error)
         this.setState({error: true});
       })
+    } else {
+      const url = `http://172.20.0.5:5000/api/v1/images/${this.state.schema}`;
+      axios.get(url, {
+        params: {
+          page: activePage,
+        },
+      })
+      .then(res => {
+        const data = res.data;
+        const status = data[1];
+        if (status === 200) {
+          let images = JSON.parse(data[0])['images'];
+          this.setState({images: images});
+          this.setState({totalItems: data.tota_count});
+          let pageCount = Math.ceil(data.tota_count / this.state.itemsPerPage);
+          this.setState({pageCount: pageCount});
+          this.setState({activePage: activePage});
+        }
+      })
+      .catch( (error) => {
+        console.log(error)
+        this.setState({error: true});
+      });
+    }
   }
 
   componentDidMount () {
+    this.fetchImages(this.state.activePage);
+  }
+
+  componentWillMount () {
     this.fetchImages(this.state.activePage);
   }
 
@@ -56,7 +96,8 @@ class ThumbViewer extends Component {
 
     let gallery = (
       <Gallery 
-        images={imagesArray}/>
+        images={imagesArray}
+        page={activePage}/>
     );
 
     return (

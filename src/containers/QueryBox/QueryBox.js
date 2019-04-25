@@ -13,12 +13,12 @@ class QueryBox extends Component {
 
   querySubmitHandler = () => {
     console.log('ENTER KEY HIT!!!');
-    axios.get('https://thumb-viewer.firebaseio.com/images.json')
+    axios.get('images.json')
     .then(response => {
       this.setState({images: response.data});
 
       this.props.history.push({
-        pathname: '/images/1',
+        pathname: 'images/1',
         state: {images: this.state.images}
       });
     })

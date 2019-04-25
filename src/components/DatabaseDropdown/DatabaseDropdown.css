@@ -9,12 +9,12 @@
   color: lime;
   margin: 0;
   padding-left: 10px;
-  /* padding-bottom: 12px; */
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   list-style: none;
   display: flex;
   flex-flow: column;
   align-items: center;
-  height: 100%;
   font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 500;
@@ -34,10 +34,15 @@
 .DatabaseDropdown button:active {
   background-color: #252525 !important;
   color: yellow !important;
-  margin-top: -2px;
+  height: 100%;
   transition: background-color .4s;
   border-radius: 0px;
   outline: none !important;
+  margin-top: -2px;
+}
+
+.DatabaseDropdown button::after {
+  display:none;
 }
 
 .DatabaseDropdown div a {
@@ -57,7 +62,4 @@
   text-decoration-color: yellow;
   border-radius: 0px;
   border: 0 !important;
-}
-.DatabaseDropdown button::after {
-  display:none;
 }
