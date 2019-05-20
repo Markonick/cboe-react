@@ -5,7 +5,7 @@ import axios from '../../axios-images';
 import classes from './DatabaseDropdown.css';
 import { withRouter } from 'react-router-dom';
 
-class databaseDropdown extends Component {
+class DatabaseDropdown extends Component {
   state = {
     images: [],
     databases: [],
@@ -55,7 +55,7 @@ class databaseDropdown extends Component {
 
     return (
       <DropdownButton
-        title="Databases"
+        title="DATABASES"
         className={classes.DatabaseDropdown}
         onSelect={this.selectHandler}
         onToggle={this.onToggle}>     
@@ -65,4 +65,4 @@ class databaseDropdown extends Component {
   }
 }
 
-export default withRouter(databaseDropdown);
+export default withRouter(DatabaseDropdown);

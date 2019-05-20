@@ -5,22 +5,28 @@ import { withRouter } from 'react-router-dom';
 
 const info = (props) => {
   return (
-    <Table className={classes.Info} striped bordered hover  variant="dark" size="sm">
+    <Table className={classes.Info} bordered hover  variant="dark" size="sm">
   
       <tbody className={classes.Info}>
         <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
+        </tr>
+        <tr>
           <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
         </tr>
       </tbody>

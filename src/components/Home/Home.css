@@ -1,0 +1,34 @@
+.Home section {
+    margin-bottom: 200px;
+    margin-left: 100px;
+}
+
+.Home div {
+    background-color: #293b5e;
+    padding-top: 100px;
+    border-radius: 3px;
+    margin-bottom: 100px;
+    margin-left: 100px;
+    padding: 10px;
+    width: 40%;
+}
+
+.Home em {
+    color: #8c96aa;
+}
+
+.Home strong {
+    color: white;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 3px;
+}
+.Home p {
+    color: #8c96aa;
+    font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+}

@@ -1,9 +1,15 @@
 .History {
-  color: magenta;
+  color: white;
   height: 100%;
 }
 
 
-.History td {
-  padding-left: 20px;
+.History Table {
+  margin-top: 30px;
+  color: white;font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  background-color: #0f2247;
+  color: #93abdd;
 }

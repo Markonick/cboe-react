@@ -5,6 +5,7 @@ import Image from './containers/Image/Image';
 import QueryBox from './containers/QueryBox/QueryBox';
 import History from './components/History/History';
 import Info from './components/Info/Info';
+import Home from './components/Home/Home';
 
 import { Route, Switch } from 'react-router-dom'; 
 import './App.css';
@@ -20,7 +21,8 @@ class App extends Component {
             <Route path="/history" component={History} />
             <Route path="/info" component={Info} />
             <Route path="/images/:page" exact component={ThumbViewer} />
-            <Route path="/" exact component={ThumbViewer} />
+            <Route path="/" exact component={Home} />
+            <Route path="/home" exact component={Home} />
           </Switch>
         </Layout>
       </div>

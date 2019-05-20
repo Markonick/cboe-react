@@ -1,30 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import classes from './History.css'
 import { withRouter } from 'react-router-dom';
+import axios from '../../axios-images';
 
-const history = (props) => {
-  return (
-    <Table className={classes.History} striped bordered hover  variant="dark" size="sm">
-      <tbody>
-        <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>      <tr>
-          <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-        </tr>
-      </tbody>
-    </Table>
-  );
+class History extends Component {
+  state = {
+    queries: [],
+  }
+
+  componentDidMount() {
+    axios.get('queries.json')
+    .then(response => {
+      this.setState({queries: response.data});
+    })
+    .catch( () => {
+      this.setState({error: true});
+    })
+  }
+
+  render() {
+    let queryHistory = this.state.queries.map((query, idx) => {
+      return (
+        <tr><td>{query}</td></tr>
+      );
+    });
+
+    return (
+      <div className={classes.History}>
+        <Table bordered hover variant="dark" size="sm">
+          <tbody className={classes.Info}>
+            {queryHistory}
+          </tbody>
+        </Table>
+      </div>
+    );
+  }
 }
 
-export default withRouter(history);
+export default withRouter(History);

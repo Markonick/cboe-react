@@ -6,15 +6,20 @@ import { withRouter } from 'react-router-dom';
 const gallery = (props) => {
 
   const imageClickHandler = (item) => {
-    console.log("You clicked me ok? id is " + item.idx);
+    console.log("You clicked me ok? id is " + item.key);
     props.history.push({
-      pathname: '/images/' + props.page + '/' + item.idx,
-      state: {url: item.url}
+      pathname: '/images/' + props.page + '/' + item.key,
+      state: {image: item.image}
     });
   }
   let urls = props.images.map((item) => {
     return (
-      <img src={item.url} alt="" onClick={() => imageClickHandler(item)} key={item.key}/>
+      <img 
+        src={item.image} 
+        alt="" 
+        onClick={() => imageClickHandler(item)} 
+        key={item.key}
+      />
     );
   });
 

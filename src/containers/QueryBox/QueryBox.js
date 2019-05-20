@@ -4,70 +4,77 @@ import axios from '../../axios-images';
 import { withRouter } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 import Table from 'react-bootstrap/Table';
-import SweetAlert from 'react-bootstrap-sweetalert';
 
 class QueryBox extends Component {
   state = {
     images: [],
+    queries: [],
+    submitting: false,
+    enteredQuery: '',
   }
 
   querySubmitHandler = () => {
-    console.log('ENTER KEY HIT!!!');
-    axios.get('images.json')
+    console.log('Submit KEY HIT!!!');
+    const query = {
+      text: this.state.enteredQuery
+    }
+    axios.post('queries.json', query)
     .then(response => {
-      this.setState({images: response.data});
+      this.setState({submitting: true});
+      if (response.status === 200) {
+        console.log("200");
+      }
+    })
+    .catch( () => {
+      this.setState({error: true});
+    });
 
-      this.props.history.push({
-        pathname: 'images/1',
-        state: {images: this.state.images}
-      });
+    this.setState({submitting: false});
+
+    this.props.history.push({
+      pathname: 'images/1',
+      state: {images: this.state.images}
+    });
+  }
+
+  componentDidMount() {
+    axios.get('queries.json')
+    .then(response => {
+      this.setState({queries: response.data});
     })
     .catch( () => {
       this.setState({error: true});
     })
   }
 
+  handleChange = (query) => {
+    this.setState({enteredQuery: query});
+  }
+
   render() {
+    let latestQueries = this.state.queries.map((query) => {
+      return (
+        <tr><td>{query}</td></tr>
+      );
+    });
+
     return (
       <div className={classes.QueryBox}>
         <Form>
           <Form.Group controlId="ControlTextarea1">
-            <Form.Control size="lg" autoFocus as="textarea" rows="10"/>
+            <Form.Control 
+            size="lg" 
+            autoFocus 
+            as="textarea" 
+            rows="10"
+            onChange={this.handleChange.bind(this)}
+            />
           </Form.Group>
         </Form>
-        <button onClick={this.querySubmitHandler}>Sumbit Query</button>
-        <Table bordered hover  variant="dark" size="sm">
-          <tbody>
-            <tr>
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr
-                  123123ghrethe56u756jer657kjr67jer6jerjrj76jjkkk
-                  Ottoasdassss23423424543554667586987897ssssssssssssssssssssssdadwsrgwdsgr
-                  hgfddghdtyuu56j67m8799879789gfhfhghfhffhff
-                  Select from * limit 1000 offset 10
-                  Select from * limit 1000 offset 10
-                  Select from * limit 1000 offset 10
-                  Select from * limit 1000 offset 10
-                  Select from * limit 1000 offset 10
-              </td>
-            </tr>
-            <tr> 
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr>
-            <tr>
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr>
-            <tr> 
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr>
-            <tr> 
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr> 
-            <tr> 
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr>
-            <tr>
-              <td>Ottoasdassssssssssssssssssssssssssdadwsrgwdsgr</td>
-            </tr>
+        <button onClick={this.querySubmitHandler}>SUBMIT</button>
+        <Table bordered hover variant="dark" size="sm">
+          <tbody className={classes.Info}>
+            {latestQueries}
           </tbody>
         </Table>
       </div>

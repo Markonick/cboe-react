@@ -8,8 +8,16 @@
   height: 100%;
   font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
-  font-weight: 400;
-  line-height: 3;
+  font-weight: 200;
+  font-size: 13px;
+  line-height: 3.4;
+}
+
+.NavigationItems nav {
+  align-items: center;
+}
+
+.NavigationItems .form-control {
 }
 
 @media (min-width: 500px) {
