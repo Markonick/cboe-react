@@ -29,7 +29,7 @@ class History extends Component {
     return (
       <div className={classes.History}>
         <Table bordered hover variant="dark" size="sm">
-          <tbody className={classes.Info}>
+          <tbody>
             {queryHistory}
           </tbody>
         </Table>
