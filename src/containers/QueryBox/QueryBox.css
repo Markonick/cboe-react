@@ -28,7 +28,6 @@ textarea {
 .QueryBox textarea:active,
 .QueryBox textarea:focus {
   font-size: 14px;
-
   margin-left: 50px;
   color: white;
   background-color: rgb(1, 11, 29);
@@ -74,17 +73,36 @@ textarea {
   outline: none !important;
 }
 
-.QueryBox Table {
+.QueryBox section {
+  background-color: #091c41;
   margin-top: 30px;
-  color: white;
+  padding-top: 16px;
   font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
-  background-color: #0f2247;
   color: #93abdd;
 }
 
-.QueryBox td {
-  padding-left: 20px;
+.div {
+  background-color: #293b5e;
+  padding-top: 100px;
+  margin-top: 16px;
+  margin-left: 100px;
+  padding: 10px;
+  width: 40%;
+  border-radius: 6px;
+}
+
+.div:hover{
+  background-color: rgb(22, 33, 53);
+}
+
+.QueryBox strong {
+  color: white;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 3px;
 }

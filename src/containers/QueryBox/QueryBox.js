@@ -3,7 +3,6 @@ import classes from './QueryBox.css';
 import axios from '../../axios-images';
 import { withRouter } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
-import Table from 'react-bootstrap/Table';
 
 class QueryBox extends Component {
   state = {
@@ -16,7 +15,8 @@ class QueryBox extends Component {
   querySubmitHandler = () => {
     console.log('Submit KEY HIT!!!');
     const query = {
-      text: this.state.enteredQuery
+      text: this.state.enteredQuery,
+      time: Date.now(),
     }
     axios.post('queries.json', query)
     .then(response => {
@@ -54,8 +54,11 @@ class QueryBox extends Component {
   render() {
     let latestQueries = this.state.queries.map((query) => {
       return (
-        <tr><td>{query}</td></tr>
-      );
+        <div className={classes.div}> 
+          <strong>Thumb·​nail·​view·​er <em>noun</em></strong>
+          <p>{query} </p>
+        </div>
+      )
     });
 
     return (
@@ -72,11 +75,10 @@ class QueryBox extends Component {
           </Form.Group>
         </Form>
         <button onClick={this.querySubmitHandler}>SUBMIT</button>
-        <Table bordered hover variant="dark" size="sm">
-          <tbody className={classes.Info}>
-            {latestQueries}
-          </tbody>
-        </Table>
+
+        <section>
+          {latestQueries}
+        </section>
       </div>
     );
   }
