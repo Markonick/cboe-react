@@ -107,7 +107,7 @@ class Studies extends Component {
 
     return (
       <Aux>
-        <div className={classes.ThumbViewer}>
+        <div className={classes.Studies}>
           <Pagination
             activePage={activePage}
             itemsCountPerPage={itemsPerPage}
