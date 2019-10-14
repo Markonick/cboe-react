@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './QueryBox.css';
-import axios from '../../axios-images';
+import axios from '../../axios-thumb';
 import { withRouter } from 'react-router-dom';
 import Form from 'react-bootstrap/Form';
 

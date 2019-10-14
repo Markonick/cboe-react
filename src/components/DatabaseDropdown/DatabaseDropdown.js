@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import axios from '../../axios-images';
+import axios from '../../axios-thumb';
 import classes from './DatabaseDropdown.css';
 import { withRouter } from 'react-router-dom';
 

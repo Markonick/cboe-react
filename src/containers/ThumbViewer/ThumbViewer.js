@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Gallery from '../../components/Gallery/Gallery';
 import Aux from '../../hoc/Aux/Aux';
-import axios from '../../axios-images';
+import axios from '../../axios-thumb';
 import classes from './ThumbViewer.css';
 import Pagination from "react-js-pagination";
 import { withRouter } from 'react-router-dom';
@@ -16,64 +16,64 @@ class ThumbViewer extends Component {
   }
 
   fetchImages = (activePage) => {
-    let offset = this.state.itemsPerPage*(activePage - 1);
+    let offset = this.state.itemsPerPage * (activePage - 1);
     const url = `images.json?orderBy="$key"&startAt="` + offset + `"&limitToFirst=` + this.state.itemsPerPage; /*+ this.state.itemsPerPage*/
     axios.get(url)
-    .then(response => {
-      let images = response.data;
-      this.setState({images: images});
-      let pageCount = Math.ceil(this.totalItems / this.state.itemsPerPage);
-      this.setState({pageCount: pageCount});
-      this.setState({activePage: activePage});
-    })
-    .catch( (error) => {
-      console.log(error)
-      this.setState({error: true});
-    })
+      .then(response => {
+        let images = response.data;
+        this.setState({ images: images });
+        let pageCount = Math.ceil(this.totalItems / this.state.itemsPerPage);
+        this.setState({ pageCount: pageCount });
+        this.setState({ activePage: activePage });
+      })
+      .catch((error) => {
+        console.log(error)
+        this.setState({ error: true });
+      })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.fetchImages(this.state.activePage);
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.fetchImages(this.state.activePage);
   }
 
   pageChangeHandler = (pageNumber) => {
     console.log(`active page is ${pageNumber}`);
-    this.setState({activePage: pageNumber});
+    this.setState({ activePage: pageNumber });
     this.fetchImages(pageNumber);
     this.props.history.push({
       pathname: '/images/' + pageNumber
     });
   }
 
-  render () {
+  render() {
     const { totalItems, images, activePage, itemsPerPage } = this.state
 
     let imagesArray = Object.keys(images)
       .map(igKey => {
-        return {image: images[igKey], key: igKey}
+        return { image: images[igKey], key: igKey }
       });
 
     let gallery = (
-      <Gallery 
+      <Gallery
         images={imagesArray}
-        page={activePage}/>
+        page={activePage} />
     );
 
     return (
-      <Aux>     
+      <Aux>
         <div className={classes.ThumbViewer}>
           <Pagination
             activePage={activePage}
             itemsCountPerPage={itemsPerPage}
             totalItemsCount={totalItems}
             pageRangeDisplayed={5}
-            onChange={this.pageChangeHandler.bind(this)}/>
+            onChange={this.pageChangeHandler.bind(this)} />
         </div>
-        {gallery} 
+        {gallery}
       </Aux>
     );
   }

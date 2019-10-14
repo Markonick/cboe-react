@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import classes from './History.css'
 import { withRouter } from 'react-router-dom';
-import axios from '../../axios-images';
+import axios from '../../axios-thumb';
 
 class History extends Component {
   state = {

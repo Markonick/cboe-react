@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import ThumbViewer from './containers/ThumbViewer/ThumbViewer';
 import Image from './containers/Image/Image';
-import QueryBox from './containers/QueryBox/QueryBox';
 import History from './components/History/History';
+import QueryBox from './containers/QueryBox/QueryBox';
+import Studies from './components/Studies/Studies';
 import Info from './components/Info/Info';
 import Home from './components/Home/Home';
 
-import { Route, Switch } from 'react-router-dom'; 
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
             <Route path="/sql" component={QueryBox} />
             <Route path="/history" component={History} />
             <Route path="/info" component={Info} />
+            <Route path="/studies/:page" component={Studies} />
             <Route path="/images/:page" exact component={ThumbViewer} />
             <Route path="/" exact component={Home} />
             <Route path="/home" exact component={Home} />
