@@ -1,0 +1,39 @@
+.Studies {
+  /* height: 30px; */
+}
+
+.Studies .pagination {
+  margin: auto;
+  width: 50%;
+} 
+
+.Studies .pagination ul {
+  display: inline-block;
+}
+
+.Studies li {
+  margin: 3px;
+  display: inline-block;
+  color: white;
+  font-family: 'Khand script=all rev=2', 'Raleway', 'Titillium Web', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.Studies li a {
+  color: #00d2e6;
+  float: right;
+  padding: 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #00d2e6;
+  width: 50px;
+}
+
+.Studies li a:hover {
+  transition: background-color .3s;
+  background-color: #00d2e6;
+  color: #031538;
+  border: 1px solid #00d2e6;
+}

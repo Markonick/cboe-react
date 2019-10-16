@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Gallery from '../../components/Gallery/Gallery';
 import Aux from '../../hoc/Aux/Aux';
-import axios from '../../axios-thumb';
+import ApiClient from '../../axios-thumb';
 import classes from './Studies.css';
 import Pagination from "react-js-pagination";
 import { withRouter } from 'react-router-dom';
@@ -15,7 +15,7 @@ class Studies extends Component {
     pageCount: 1,
   }
 
-  query = `query {
+  query = ` {
     allStudies(first:5) {
       edges {
         node {
@@ -56,11 +56,9 @@ class Studies extends Component {
   }`
 
   fetchStudies = (activePage) => {
-
     let offset = this.state.itemsPerPage * (activePage - 1);
-    const url = `http://localhost:5000/graphql`
-
-    axios.get(url, this.query)
+    const url = "http://localhost:5000/graphql?query=";
+    ApiClient.get(url + this.query, { headers: { 'Accept': 'application/json' } })
       .then(response => {
         let studies = response.data;
         this.setState({ studies: studies });
@@ -69,7 +67,7 @@ class Studies extends Component {
         this.setState({ activePage: activePage });
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         this.setState({ error: true });
       })
   }
@@ -96,11 +94,11 @@ class Studies extends Component {
 
     let studiesArray = Object.keys(studies)
       .map(igKey => {
-        return { study: studies[igKey], key: igKey }
+        return { study: studies[igKey].allStudies.edges, key: igKey }
       });
 
     let gallery = (
-      <Gallery
+      <div
         studies={studiesArray}
         page={activePage} />
     );
