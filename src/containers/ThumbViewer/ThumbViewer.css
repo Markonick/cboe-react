@@ -5,6 +5,7 @@
 .ThumbViewer .pagination {
   margin: auto;
   width: 50%;
+  float: right;
 } 
 
 .ThumbViewer .pagination ul {
