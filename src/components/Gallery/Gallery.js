@@ -9,15 +9,15 @@ const gallery = (props) => {
     console.log("You clicked me ok? id is " + item.key);
     props.history.push({
       pathname: '/images/' + props.page + '/' + item.key,
-      state: {image: item.image}
+      state: { image: item.image }
     });
   }
-  let urls = props.images.map((item) => {
+  let urls = props.level.map((item) => {
     return (
-      <img 
-        src={item.image} 
-        alt="" 
-        onClick={() => imageClickHandler(item)} 
+      <img
+        src={item.image}
+        alt=""
+        onClick={() => imageClickHandler(item)}
         key={item.key}
       />
     );

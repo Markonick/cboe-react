@@ -15,7 +15,6 @@ class NavigationItems extends Component {
       <ul className={classes.NavigationItems}>
         <Logo onClick={this.logoClickHander} link="/home"></Logo>
         <NavigationItem link="/">HOME</NavigationItem>
-        <NavigationItem link="/studies/1">STUDIES</NavigationItem>
         <NavigationItem link="/images/1">GALLERY</NavigationItem>
         <NavigationItem link="/sql">SQL</NavigationItem>
         <NavigationItem link="/history">HISTORY</NavigationItem>
