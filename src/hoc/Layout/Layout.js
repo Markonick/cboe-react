@@ -4,10 +4,10 @@ import Aux from '../Aux/Aux';
 import classes from './Layout.css';
 
 class Layout extends Component {
-  render () {
+  render() {
     return (
       <Aux>
-        <Toolbar/>
+        <Toolbar />
         <main className={classes.Content}>
           {this.props.children}
         </main>

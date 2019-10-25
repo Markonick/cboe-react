@@ -1,7 +1,7 @@
 version: '3'
 services:
-  sample-prod:
-    container_name: thumb-react-prod
+  cboe-react:
+    container_name: cboe-react
     build:
       context: .
       dockerfile: Dockerfile

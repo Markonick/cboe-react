@@ -34,7 +34,7 @@
   .NavigationItem a:hover,
   .NavigationItem a:active,
   .NavigationItem a.active {
-    background-color: #162136;
+    /* background-color: #162136; */
     color: rgb(11, 171, 219);
     transition: background-color .4s;
   }

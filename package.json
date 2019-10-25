@@ -1,5 +1,5 @@
 {
-  "name": "thumb-viewer-react",
+  "name": "cboe-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -114,8 +114,8 @@
       "node"
     ],
     "watchPlugins": [
-      "/home/markonick/Projects/thumb-viewer-react/node_modules/jest-watch-typeahead/filename.js",
-      "/home/markonick/Projects/thumb-viewer-react/node_modules/jest-watch-typeahead/testname.js"
+      "/home/markonick/Projects/cboe-react/node_modules/jest-watch-typeahead/filename.js",
+      "/home/markonick/Projects/cboe-react/node_modules/jest-watch-typeahead/testname.js"
     ]
   },
   "babel": {
