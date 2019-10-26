@@ -11,15 +11,14 @@ class Home extends Component {
     messages: [],
     messageCounts: [],
     activePage: 1,
-    totalMessages: 10000,
+    totalMessages: 20000,
     itemsPerPage: 100,
     pageCount: 1,
   }
 
   fetchMessages = (activePage) => {
-    let offset = this.state.itemsPerPage * (activePage - 1);
     const url = "http://localhost:5000/api/v1/pitch";
-    apiClient.get(url, { headers: { 'Accept': 'application/json' } })
+    apiClient.get(url,  { headers: { 'Accept': 'application/json' } }, { page: activePage} )
       .then(response => {
         this.setState({ messages: response.data.body.messages });
         this.setState({ messageCounts: response.data.body.counts });
@@ -46,13 +45,10 @@ class Home extends Component {
     console.log(`active page is ${pageNumber}`);
     this.setState({ activePage: pageNumber });
     this.fetchMessages(pageNumber);
-    this.props.history.push({
-      pathname: '/images/' + pageNumber
-    });
   }
 
   render() {
-    const { messages, messageCounts, totalMessages, activePage, itemsPerPage } = this.state
+    const { messages, messageCounts, totalMessages, activePage, itemsPerPage, pageCount } = this.state
     let messagesArray = messages.map((message, idx) => {
       return (
         <tr>
@@ -75,6 +71,12 @@ class Home extends Component {
     return (
       <Aux>
         <div className={classes.Home}>
+          <Pagination
+            activePage={activePage}
+            itemsCountPerPage={itemsPerPage}
+            totalItemsCount={totalMessages}
+            pageRangeDisplayed={5}
+            onChange={this.pageChangeHandler.bind(this)} />
           <Table bordered hover variant="dark" size="sm">
             <thead>
               <tr>
