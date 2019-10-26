@@ -18,7 +18,10 @@ class Home extends Component {
 
   fetchMessages = (activePage) => {
     const url = "http://localhost:5000/api/v1/pitch";
-    apiClient.get(url,  { headers: { 'Accept': 'application/json' } }, { page: activePage} )
+    apiClient.get(
+      url,
+      { headers: { 'Accept': 'application/json' } },
+      { params: { page: activePage } })
       .then(response => {
         this.setState({ messages: response.data.body.messages });
         this.setState({ messageCounts: response.data.body.counts });
