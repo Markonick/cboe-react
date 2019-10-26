@@ -79,7 +79,7 @@ class Home extends Component {
       )
     };
 
-    counts.push(showCurrentPage);
+    counts.unshift(showCurrentPage());
 
     return (
       <Aux>
