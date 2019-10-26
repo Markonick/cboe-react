@@ -12,7 +12,7 @@ class Home extends Component {
     messageCounts: [],
     activePage: 1,
     totalMessages: 20000,
-    itemsPerPage: 100,
+    itemsPerPage: 50,
     pageCount: 1,
   }
 
