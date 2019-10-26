@@ -8,12 +8,16 @@
   width: 50%;
 } 
 
+.Home ul .pagination {
+  margin-left: 20px;
+}
+
 .Home .pagination ul {
   display: inline-block;
 }
 
 .Home li {
-  margin-left: 30px;
+  margin-left: 10px;
   /* margin: 3px; */
   display: inline-block;
   color: white;
@@ -35,7 +39,7 @@
 
 .Home li a:hover {
   transition: background-color .3s;
-  background-color: #09FE84;
+  background-color: #09fe84;
   color: #031538;
   border: 1px solid #00d2e6;
 }
