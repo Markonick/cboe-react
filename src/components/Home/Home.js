@@ -70,6 +70,17 @@ class Home extends Component {
       )
     });
 
+    let showCurrentPage = () => {
+      return (
+        <div className={classes.Info.div}>
+          <strong>Current Page<em>#</em></strong>
+          <p> {activePage} </p>
+        </div>
+      )
+    };
+
+    counts.push(showCurrentPage);
+
     return (
       <Aux>
         <div className={classes.Home}>
