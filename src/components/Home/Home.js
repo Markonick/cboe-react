@@ -11,7 +11,7 @@ class Home extends Component {
     messages: [],
     messageCounts: [],
     activePage: 1,
-    totalMessages: 20000,
+    totalMessages: 0,
     itemsPerPage: 50,
     pageCount: 1,
   }
@@ -24,7 +24,9 @@ class Home extends Component {
       .then(response => {
         this.setState({ messages: response.data.body.messages });
         this.setState({ messageCounts: response.data.body.counts });
-        let pageCount = Math.ceil(this.totalMessages / this.state.itemsPerPage);
+        let totalMessages = response.data.body.totalCount;
+        this.setState({ totalMessages: totalMessages });
+        let pageCount = Math.ceil(totalMessages / this.state.itemsPerPage);
         this.setState({ pageCount: pageCount });
         this.setState({ activePage: activePage });
       })
@@ -33,7 +35,6 @@ class Home extends Component {
         this.setState({ error: true });
       })
   }
-
 
   componentDidMount() {
     this.fetchMessages(this.state.activePage);
@@ -79,7 +80,16 @@ class Home extends Component {
       )
     };
 
-    counts.unshift(showCurrentPage());
+    let showTotalCount = () => {
+      return (
+        <div className={classes.Info.div}>
+          <strong>Total messages<em>#</em></strong>
+          <p> {totalMessages} </p>
+        </div>
+      )
+    };
+
+    counts.unshift(showCurrentPage(), showTotalCount());
 
     return (
       <Aux>
