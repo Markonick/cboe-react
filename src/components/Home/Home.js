@@ -11,9 +11,11 @@ class Home extends Component {
     messages: [],
     messageCounts: [],
     activePage: 1,
+    currentMessages: 0,
     totalMessages: 0,
     itemsPerPage: 50,
     pageCount: 1,
+    percentage: 0,
   }
 
   fetchMessages = (activePage) => {
@@ -24,10 +26,15 @@ class Home extends Component {
       .then(response => {
         this.setState({ messages: response.data.body.messages });
         this.setState({ messageCounts: response.data.body.counts });
+        let currentMessages = response.data.body.currentCount;
         let totalMessages = response.data.body.totalCount;
+        this.setState({ currentMessages: currentMessages });
         this.setState({ totalMessages: totalMessages });
         let pageCount = Math.ceil(totalMessages / this.state.itemsPerPage);
+        let percentage = 100*Math.floor(currentMessages / totalMessages);
+
         this.setState({ pageCount: pageCount });
+        this.setState({ percentage: percentage });
         this.setState({ activePage: activePage });
       })
       .catch((error) => {
@@ -51,7 +58,7 @@ class Home extends Component {
   }
 
   render() {
-    const { messages, messageCounts, totalMessages, activePage, itemsPerPage, pageCount } = this.state
+    const { messages, messageCounts, currentMessages, totalMessages, percentage, activePage, itemsPerPage, pageCount } = this.state
     let messagesArray = messages.map((message, idx) => {
       return (
         <tr>
@@ -80,6 +87,15 @@ class Home extends Component {
       )
     };
 
+    let showCurrentCount = () => {
+      return (
+        <div className={classes.Info.div}>
+          <strong>Current messages<em>#</em></strong>
+          <p> {currentMessages} </p>
+        </div>
+      )
+    };
+
     let showTotalCount = () => {
       return (
         <div className={classes.Info.div}>
@@ -89,7 +105,16 @@ class Home extends Component {
       )
     };
 
-    counts.unshift(showCurrentPage(), showTotalCount());
+    let showPercentage = () => {
+      return (
+        <div className={classes.Info.div}>
+          <strong>Percent loaded: </strong>
+          <p> {percentage} %</p>
+        </div>
+      )
+    };
+
+    counts.unshift(showCurrentPage(), showCurrentCount(), showTotalCount());
 
     return (
       <Aux>
