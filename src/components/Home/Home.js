@@ -31,7 +31,7 @@ class Home extends Component {
         this.setState({ currentMessages: currentMessages });
         this.setState({ totalMessages: totalMessages });
         let pageCount = Math.ceil(totalMessages / this.state.itemsPerPage);
-        let percentage = 100*Math.floor(currentMessages / totalMessages);
+        let percentage = Math.round((currentMessages / totalMessages) * 100);
 
         this.setState({ pageCount: pageCount });
         this.setState({ percentage: percentage });
@@ -114,7 +114,7 @@ class Home extends Component {
       )
     };
 
-    counts.unshift(showCurrentPage(), showCurrentCount(), showTotalCount());
+    counts.unshift(showCurrentPage(), showCurrentCount(), showTotalCount(), showPercentage());
 
     return (
       <Aux>
